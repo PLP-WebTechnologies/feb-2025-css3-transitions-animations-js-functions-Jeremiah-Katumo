@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Animations and LocalStorage</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <button class="button" id="animateButton">Hover to Animate</button>
+  <br><br>
+  <button id="saveColorBtn">Save Color Preference</button>
+  <button id="loadColorBtn">Load Color Preference</button>
+
+  <script>
+    // JavaScript to store and retrieve preferences
+    document.getElementById('saveColorBtn').addEventListener('click', function () {
+      const color = prompt('Enter your favorite color:');
+      localStorage.setItem('favoriteColor', color);
+      alert(`Favorite color saved: ${color}`);
+    });
+
+    document.getElementById('loadColorBtn').addEventListener('click', function () {
+      const savedColor = localStorage.getItem('favoriteColor');
+      if (savedColor) {
+        alert(`Your favorite color is: ${savedColor}`);
+        document.body.style.backgroundColor = savedColor; // Apply color to background
+      } else {
+        alert('No favorite color saved.');
+      }
+    });
+
+    // Triggering animation when the button is clicked
+    document.getElementById('animateButton').addEventListener('click', function () {
+      alert('You clicked the animated button!');
+    });
+  </script>
+</body>
+</html>
